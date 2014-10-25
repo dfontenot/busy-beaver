@@ -1,5 +1,7 @@
 #include "tape_deque.hpp"
 
+#include <cstddef>		// for NULL
+
 TapeDeque::TapeDeque()
 {
     head = new node_t(false, NULL, NULL);
