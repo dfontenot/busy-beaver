@@ -1,3 +1,6 @@
 *~
 *.exe
 busy_beaver
+
+include/gtest
+lib/
