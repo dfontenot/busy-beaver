@@ -10,6 +10,16 @@ TapeDeque::TapeDeque()
 
 TapeDeque::~TapeDeque() {}
 
+node_t* TapeDeque::h()
+{
+    return head;
+}
+
+node_t* TapeDeque::getPosition()
+{
+    return currentPosition;
+}
+
 //return the score (or how many ones are written)
 int TapeDeque::score()
 {

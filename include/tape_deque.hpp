@@ -16,6 +16,8 @@ class TapeDeque
     public:
     TapeDeque();
     ~TapeDeque();
+    node_t* h();
+    node_t* getPosition();
     void moveRight(bool write);
     void moveLeft(bool write);
     bool currentValue();
