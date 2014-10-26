@@ -19,18 +19,13 @@ struct state_t
 };
 typedef struct state_t state_t;
 
-void pushState(vector< pair<state_t, state_t>* >& states, state_t stateZero, state_t stateOne)
-{
-    states.push_back(new pair<state_t, state_t> (stateZero, stateOne));
-}
-
 int main(int argc, char** argv)
 {
     TapeDeque tape;
     
     /* first: execution on zero
      * second: execution on one */
-    vector< pair<state_t, state_t>* >states;
+    vector< pair<state_t, state_t>* > states;
 
     //diagram of this state table
     /*    A    B    C
@@ -40,11 +35,6 @@ int main(int argc, char** argv)
     states.push_back(new pair<state_t, state_t> (state_t(true, true, 1), state_t(true, true, 3)));
     states.push_back(new pair<state_t, state_t> (state_t(false, true, 2), state_t(true, false, 0)));
     states.push_back(new pair<state_t, state_t> (state_t(true, false, 2), state_t(true, false, 0)));
-    
-    /*pushState(states, state_t(true, true, 1), state_t(true, false, 1));
-    pushState(states, state_t(true, false, 0), state_t(false, false, 2));
-    pushState(states, state_t(true, true, 4), state_t(true, false, 3));
-    pushState(states, state_t(true, true, 3), state_t(false, true, 0));*/
     
     int currentState = 0;
     int steps = 0;
