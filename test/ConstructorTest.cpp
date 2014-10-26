@@ -14,11 +14,15 @@ namespace
 	virtual void SetUp() {}
 	virtual void TearDown() {}
     };
-    
-    TEST(ConstructorTest, Init)
+
+    TEST_F(ConstructorTest, Init)
     {
 	TapeDeque t;
-	EXPECT_EQ(t.h(), t.getPosition());
+	node_t* hd = t.h();
+	EXPECT_EQ(hd, t.getPosition());
+	EXPECT_EQ(hd->value, false);
+	EXPECT_EQ(hd->left, (node_t*)NULL);
+	EXPECT_EQ(hd->right, (node_t*)NULL);
     }
 }
 
