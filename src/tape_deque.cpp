@@ -26,7 +26,8 @@ int TapeDeque::score()
     //go all the way to the left and count upwards
     node_t* current = head;
     int score = 0;
-    
+
+    // seek all the way to the left
     while(current->left != NULL)
     {
         current = current->left;
