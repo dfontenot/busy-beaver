@@ -2,7 +2,7 @@
 #include <vector>
 #include <utility>
 
-#include "tape_deque.hpp"
+#include "TapeDeque.hpp"
 
 using std::cout;
 using std::endl;

@@ -1,4 +1,4 @@
-#include "tape_deque.hpp"
+#include "TapeDeque.hpp"
 
 #include <cstddef>		// for NULL
 
