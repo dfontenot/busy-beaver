@@ -16,4 +16,4 @@ tests: $(TESTS)
 	$(CC) $(TEST_CFLAGS) $(filter-out src/busybeaver.cpp,$(SOURCES)) $^ -o $@ $(TEST_CLIBS)
 
 clean:
-	rm busy_beaver*
+	rm busy_beaver* tests*
