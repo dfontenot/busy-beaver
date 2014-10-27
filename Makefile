@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Iinclude
+CFLAGS=-Iinclude -std=c++11
 TEST_CFLAGS=-isystem include -Llib
 TEST_CLIBS=-lpthread -lgtest
 SOURCES=$(wildcard src/*.cpp)
@@ -13,7 +13,7 @@ busy_beaver: $(SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@
 
 tests: $(TESTS)
-	$(CC) $(TEST_CFLAGS) $(filter-out src/busybeaver.cpp,$(SOURCES)) $^ -o $@ $(TEST_CLIBS)
+	$(CC) $(CFLAGS) $(TEST_CFLAGS) $(filter-out src/busybeaver.cpp,$(SOURCES)) $^ -o $@ $(TEST_CLIBS)
 
 clean:
 	rm busy_beaver* tests*
