@@ -3,8 +3,10 @@
 
 #include "TapeDeque.hpp"
 
+#include <vector>
 #include <tuple>
 
+using std::vector;
 using std::tuple;
 
 struct state_t
@@ -20,19 +22,24 @@ typedef struct state_t state_t;
 class BusyBeaver
 {
 protected:
-    vector< tuple<state_t, state_t>* > states;
+    TapeDeque t;
+    vector< tuple<state_t*, state_t*>* >& states;
+    
     int currentState;
-    int steps;
+    int iterations;
+    int score;
 
     // emits: symbol to write, direction to write, new state
-    tuple<bool, bool, int>* transition();
+    state_t* transition();
 
 public:
-    BusyBeaver(vector< tuple<state_t, state_t>* >& s) :
-	states(s), currentState(0), steps(0) {}
+    BusyBeaver(vector< tuple<state_t*, state_t*>* >& s) :
+	states(s), currentState(0), iterations(0), score(0) {}
+    ~BusyBeaver();
 
     void run();
-    int getSteps();
+    int getIterations();
+    int getScore();
 };
 
 #endif
