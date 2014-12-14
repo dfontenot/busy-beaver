@@ -28,42 +28,9 @@ int main(int argc, char** argv)
 
     BusyBeaver b(states);
     b.run();
-    // int currentState = 0;
-    // int steps = 0;
-
-    // //the halt state is represented as 1 greater than the zero-indexed size of the states vector
-    // while(currentState < states.size())
-    // {
-    // //while(currentState != states.size()) {
-    // 	//true so pick the second part of the pair
-    //     if(tape.currentValue()) 
-    // 	{
-    //         //true goes right, false goes left
-    //         if(states[currentState]->second.direction) 
-    //             tape.moveRight(states[currentState]->second.write);
-    //         else
-    //             tape.moveLeft(states[currentState]->second.write);
-            
-    //         currentState = states[currentState]->second.nextState;
-    //     }
-    // 	//false so pick the first part
-    //     else
-    // 	{    
-    //         if(states[currentState]->first.direction)
-    //             tape.moveRight(states[currentState]->first.write);
-    //         else
-    //             tape.moveLeft(states[currentState]->first.write);
-            
-    //         currentState = states[currentState]->first.nextState;
-    //     }
-        
-    //     cout << "next state is " << currentState << endl;
-        
-    //     steps++;
-    // }
     
     cout << "complete in " << b.getIterations() << " steps" << endl;
-    cout << "the busy beaver's count is " << b.getScore() << endl;
+    cout << "the busy beaver's score is " << b.getScore() << endl;
     
     return 0;
 }

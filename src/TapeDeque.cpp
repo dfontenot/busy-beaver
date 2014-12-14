@@ -27,15 +27,25 @@ int TapeDeque::score()
     node_t* current = head;
     int score = 0;
 
-    // seek all the way to the left
+    // check head
+    if(current->value)
+	score++;
+
+    // look to the left all the way
     while(current->left != NULL)
     {
+	if(current->left->value)
+	    score++;
+	
         current = current->left;
     }
-    
+
+    current = head;
+
+    // look to the right all the way
     while(current->right != NULL)
     {
-        if(current->value)
+        if(current->right->value)
 	    score++;
 	
         current = current->right;
