@@ -1,0 +1,9 @@
+Steps for building Google test:
+
+1. If python 3 is pointed to by `which python`, link python to run python2
+
+2. Compile Google test:
+export CXXFLAGS="$CXXFLAGS -std=c++11 -DGTEST_USE_OWN_TR1_TUPLE=1" ; ./configure ; make
+
+3. Copy from lib (in gtest) into this directory to get all libtool generated libs
+cp -R gtest-1.7.0/lib .
