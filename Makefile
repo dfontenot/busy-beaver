@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Iinclude -std=gnu++11
+CFLAGS=-Iinclude -std=gnu++11 -g
 TEST_CFLAGS=-isystem include
 TEST_CLIBS=-lpthread lib/.libs/libgtest.a
 SOURCES=$(wildcard src/*.cpp)
