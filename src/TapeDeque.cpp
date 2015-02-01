@@ -56,22 +56,22 @@ int TapeDeque::score()
 
 void TapeDeque::moveRight(bool write)
 {
+    currentPosition->value = write;
+    
     //create new node if true, else overwrite
     if(currentPosition->right == NULL)
-        currentPosition->right = new node_t(write, currentPosition, NULL);
-    else
-        currentPosition->right->value = write;
+        currentPosition->right = new node_t(false, currentPosition, NULL);
     
     currentPosition = currentPosition->right;
 }
 
 void TapeDeque::moveLeft(bool write)
 {
+    currentPosition->value = write;
+    
     //create new node if true, else overwrite
     if(currentPosition->left == NULL)
-        currentPosition->left = new node_t(write, NULL, currentPosition);
-    else
-        currentPosition->left->value = write;
+        currentPosition->left = new node_t(false, NULL, currentPosition);
     
     currentPosition = currentPosition->left;
 }

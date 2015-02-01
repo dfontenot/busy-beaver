@@ -25,19 +25,21 @@ namespace
     	EXPECT_NE(hd, cur);
     	EXPECT_EQ(hd->right, cur);
 	EXPECT_EQ(hd->left, (node_t*)NULL);
-    	EXPECT_EQ(cur->value, true);
+    	EXPECT_EQ(hd->value, true);
+	EXPECT_EQ(cur->value, false);
     }
 
     TEST_F(MovementTest, MoveLeft)
     {
 	TapeDeque t;
-    	t.moveLeft(false);
+    	t.moveLeft(true);
     	node_t* hd = t.h();
     	node_t* cur = t.getPosition();
 
     	EXPECT_NE(hd, cur);
     	EXPECT_EQ(hd->left, cur);
 	EXPECT_EQ(hd->right, (node_t*)NULL);
+	EXPECT_EQ(hd->value, true);
     	EXPECT_EQ(cur->value, false);
     }
 
@@ -54,7 +56,7 @@ namespace
 	node_t* cur = t.h();
 	for(i = 0; i < 5; i++)
 	{
-	    EXPECT_EQ(cur->left->value, true);
+	    EXPECT_EQ(cur->value, true);
 	    EXPECT_EQ(cur->left->right, cur);
 	    cur = cur->left;
 	}
@@ -66,7 +68,7 @@ namespace
 	{
 	    t.moveRight(false);
 	    cur = cur->right;
-	    EXPECT_EQ(cur->value, false);
+	    EXPECT_EQ(cur->value, true); // hasn't been overwritten yet
 	}
     }
 
@@ -83,7 +85,7 @@ namespace
 	node_t* cur = t.h();
 	for(i = 0; i < 5; i++)
 	{
-	    EXPECT_EQ(cur->right->value, false);
+	    EXPECT_EQ(cur->value, false);
 	    EXPECT_EQ(cur->right->left, cur);
 	    cur = cur->right;
 	}
@@ -95,7 +97,7 @@ namespace
 	{
 	    t.moveLeft(true);
 	    cur = cur->left;
-	    EXPECT_EQ(cur->value, true);
+	    EXPECT_EQ(cur->value, false);
 	}
     }
 }

@@ -35,7 +35,7 @@ namespace
 	 * 0 1RH
 	 * 1 n/a
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, true, 1)));
+	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, true, 1)));  // A column
 	
 	BusyBeaver b(states);
 	b.run();
@@ -53,8 +53,8 @@ namespace
 	 * 0 1RB  1LA
 	 * 1 1LB  1RH
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, false, 1)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 0), new state_t(true, false, 2)));
+	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, false, 1))); // A column
+	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 0), new state_t(true, true, 2))); // B column
 	
 	BusyBeaver b(states);
 	b.run();
