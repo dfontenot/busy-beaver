@@ -4,4 +4,4 @@ busy_beaver
 tests
 
 include/gtest
-lib/.libs/
+
