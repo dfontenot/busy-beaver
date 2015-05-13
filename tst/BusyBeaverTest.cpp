@@ -22,20 +22,21 @@ namespace
     protected:
     	BusyBeaverTest() {}
     	virtual ~BusyBeaverTest() {}
-    	virtual void SetUp() {}
-    	virtual void TearDown() {}
     };
     
     TEST_F(BusyBeaverTest, OneStateTwoSymbol)
     {
-	vector< tuple<state_t*, state_t*>* > states;
+        // TODO: paramterize this to cut down on boilerplate?
+	vector< tuple<state_t, state_t> > states;
 
 	//diagram of this state table
 	/*    A
 	 * 0 1RH
 	 * 1 n/a
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, true, 1)));  // A column
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 1),
+                          state_t(true, true, 1)));  // A column
 	
 	BusyBeaver b(states);
 	b.run();
@@ -46,15 +47,20 @@ namespace
 
     TEST_F(BusyBeaverTest, TwoStateTwoSymbol)
     {
-	vector< tuple<state_t*, state_t*>* > states;
+	vector< tuple<state_t, state_t> > states;
 
 	//diagram of this state table
 	/*    A    B
 	 * 0 1RB  1LA
 	 * 1 1LB  1RH
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, false, 1))); // A column
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 0), new state_t(true, true, 2))); // B column
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 1),
+                          state_t(true, false, 1))); // A column
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, false, 0),
+                          state_t(true, true, 2))); // B column
 	
 	BusyBeaver b(states);
 	b.run();
@@ -65,16 +71,24 @@ namespace
 
     TEST_F(BusyBeaverTest, ThreeStateTwoSymbol)
     {
-	vector< tuple<state_t*, state_t*>* > states;
+	vector< tuple<state_t, state_t> > states;
 
 	//diagram of this state table
 	/*    A    B    C
 	 * 0 1RB  0RC  1LC
 	 * 1 1RH  1RB  1LA
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, true, 3)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(false, true, 2), new state_t(true, false, 0)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 2), new state_t(true, false, 0)));
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 1),
+                          state_t(true, true, 3)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(false, true, 2),
+                          state_t(true, false, 0)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, false, 2),
+                          state_t(true, false, 0)));
 	
 	BusyBeaver b(states);
 	b.run();
@@ -85,17 +99,28 @@ namespace
 
     TEST_F(BusyBeaverTest, FourStateTwoSymbol)
     {
-	vector< tuple<state_t*, state_t*>* > states;
+	vector< tuple<state_t, state_t> > states;
 
 	//diagram of this state table
 	/*    A    B    C    D
 	 * 0 1RB  1LA  1RH  1RD
 	 * 1 1LB  0LC  1LD  0RA
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, false, 1)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 0), new state_t(false, false, 2)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 4), new state_t(true, false, 3)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 3), new state_t(false, true, 0)));
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 1),
+                          state_t(true, false, 1)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, false, 0),
+                          state_t(false, false, 2)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 4),
+                          state_t(true, false, 3)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 3),
+                          state_t(false, true, 0)));
 	
 	BusyBeaver b(states);
 	b.run();
@@ -106,18 +131,32 @@ namespace
 
     TEST_F(BusyBeaverTest, FiveStateTwoSymbol)
     {
-	vector< tuple<state_t*, state_t*>* > states;
+	vector< tuple<state_t, state_t> > states;
 
 	//diagram of this state table
 	/*    A    B    C    D    E
 	 * 0 1RB  1RC  1RD  1LA  1RH
 	 * 1 1LC  1RB  0LE  1LD  0LA
 	 */
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 1), new state_t(true, false, 2)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 2), new state_t(true, true, 1)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 3), new state_t(false, false, 4)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, false, 0), new state_t(true, false, 3)));
-	states.push_back(new tuple<state_t*, state_t*> (new state_t(true, true, 5), new state_t(false, false, 0)));
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 1),
+                          state_t(true, false, 2)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 2),
+                          state_t(true, true, 1)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 3),
+                          state_t(false, false, 4)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, false, 0),
+                          state_t(true, false, 3)));
+        
+	states.push_back(tuple<state_t, state_t>
+                         (state_t(true, true, 5),
+                          state_t(false, false, 0)));
 	
 	BusyBeaver b(states);
 	b.run();
