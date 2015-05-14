@@ -84,7 +84,7 @@ namespace
         
 	states.push_back(tuple<state_t, state_t>
                          (state_t(false, true, 2),
-                          state_t(true, false, 0)));
+                          state_t(true, true, 1)));
         
 	states.push_back(tuple<state_t, state_t>
                          (state_t(true, false, 2),

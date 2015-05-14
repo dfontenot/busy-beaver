@@ -12,9 +12,9 @@ state_t& BusyBeaver::transition()
 {
     tuple<state_t, state_t>& s = states[currentState];
     if(t.currentValue())
-	return std::get<0>(s);
-    else
 	return std::get<1>(s);
+    else
+	return std::get<0>(s);
 }
 
 void BusyBeaver::run()
