@@ -1,6 +1,7 @@
 #include "TapeDeque.hpp"
 
 #include <cstddef>		// for NULL
+#include <cstdlib>
 
 TapeDeque::TapeDeque()
 {
@@ -8,7 +9,29 @@ TapeDeque::TapeDeque()
     currentPosition = head;
 }
 
-TapeDeque::~TapeDeque() {}
+TapeDeque::~TapeDeque()
+{
+    // TODO: make this less copy-paste somehow
+    // (not feeling like writing an iterator, something else instead...)
+    node_t* current = head->left;
+
+    while(current != NULL)
+    {
+        node_t* to_delete = current;
+        current = current->left;
+        free(to_delete);
+    }
+
+    current = head->right;
+    while(current != NULL)
+    {
+        node_t* to_delete = current;
+        current = current->right;
+        free(to_delete);
+    }
+
+    free(head);
+}
 
 node_t* TapeDeque::h()
 {
