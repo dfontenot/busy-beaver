@@ -2,6 +2,8 @@
 
 #include <cstddef>		// for NULL
 #include <cstdlib>
+#include <string>
+#include <sstream>
 
 TapeDeque::TapeDeque()
 {
@@ -33,18 +35,45 @@ TapeDeque::~TapeDeque()
     free(head);
 }
 
-node_t* TapeDeque::h()
+node_t* TapeDeque::h() const
 {
     return head;
 }
 
-node_t* TapeDeque::getPosition()
+std::string TapeDeque::str() const
+{
+    std::stringstream ss;
+
+    // seek to far left
+    node_t* pos = head;
+    while (pos->left != NULL)
+    {
+        pos = pos->left;
+    }
+
+    while (pos != NULL)
+    {
+        if (pos == currentPosition)
+        {
+            ss << "[" << pos->value << "]";
+        }
+        else {
+            ss << pos->value;
+        }
+
+        pos = pos->right;
+    }
+
+    return ss.str();
+}
+
+node_t* TapeDeque::getPosition() const
 {
     return currentPosition;
 }
 
 //return the score (or how many ones are written)
-int TapeDeque::score()
+int TapeDeque::score() const
 {
     //go all the way to the left and count upwards
     node_t* current = head;
@@ -99,7 +128,7 @@ void TapeDeque::moveLeft(bool write)
     currentPosition = currentPosition->left;
 }
 
-bool TapeDeque::currentValue()
+bool TapeDeque::currentValue() const
 {
     return currentPosition->value;
 }
